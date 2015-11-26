@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title> | Index</title>
+<title><%= config.siteNavbar %> | Index</title>
   <!-- Stylesheets, JS Dependencies -->
   <%- include('./partials/dependencies') %>
 </head>
@@ -17,8 +17,8 @@
         <div class="width">
             <div class="intro-content">
  
-                <h2>Index Page Header</h2>
-                <p>Index Page Information Text</p>
+                <h2><%= config.indexHeader %></h2>
+                <p><%= config.indexTagline %></p>
                                   	
                 <p><a href="#" class="button button-slider"><i class="fa fa-gbp"></i>Order</a>
 				<a href="#" class="button button-reversed button-slider"><i class="fa fa-info"></i> Learn More</a></p>
@@ -31,10 +31,10 @@
 		<section id="content" class="two-column with-right-sidebar">
 		<article class="expanded">
 
-            		<h2>Buy unbranded</h2>
+            		<h2><%= config.indexArticleHeader %></h2>
 
 			
-            <p>Purchasing a template license for 8.00 GBP (at time of writing around 12 USD) gives you the right to remove any branding including links, logos and source tags relating to ZyPOP. As well as waiving the attribution requirement, your payment will also help us provide continued support for users as well as creating new web templates. Find out more about how to buy at the licensing page on our website which can be accessed at <a href="http://zypopwebtemplates.com/licensing" title="template license">http://zypopwebtemplates.com/licensing</a></p>
+            <p><%- config.indexArticleContent %></p>
 
 		</article>
         </section>
