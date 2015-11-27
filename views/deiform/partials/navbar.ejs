@@ -1,53 +1,71 @@
 <!DOCTYPE HTML>
 <!-- partials/navbar.ejs -->
 
-    <header> 
-    <div class="width">
+<header> 
+  <div class="width">
+    <!-- Website Logo Name -->
+      <h1><a href="/"><%= config.siteName %></a></h1>
+      <!-- Navigation Bar -->
+      <nav>
+        <ul class="sf-menu dropdown">
+          <!-- <li class="selected"> -->
 
-            <h1><a href="/"><%= config.siteName %></a></h1>
+          <!-- Navigation Entries forEach function. This takes the navbarEntries, which is an array containing all navbar objects and runs a function
+               for each entry.
+          -->
+            <% navbarEntries.forEach( function (navbarEntry) { %>
 
-        <nav>
-    
-                <ul class="sf-menu dropdown">
+                <!-- 
+                  Our "header" is stored as NAME:URL for all entries. We are using a
+                  .split(':') to split this into a two part array. headerParts[0]
+                  will always be the name. headerParts[1] will always be the URL.
+                -->
+                    <% var headerParts = navbarEntry.header.split('|'); %>
 
-            
-                    <li class="selected"><a href="index.html">Home</a></li>
+                    <li><!-- Begin the item list. We use <li> for each header entry -->
+                        <a href="<%= headerParts[1] %>"><%= headerParts[0] %></a><!-- This is our header entry -->
 
-                        <li>
+                        <!-- 
+                            Our "dropdown" consists of a series of NAME:URL;NAME:URL. 
 
-                    <a href="examples.html">Style examples</a>
-                        
-                    <ul>
-                                <li><a href="three-column.html">Three Column</a></li>
-                        <li><a href="one-column.html">One Column</a></li>
-                                    <li><a href="#">Another link</a></li>
+                            If the entry is null, skip this section. But if it is not, do the following.
+
+                            Each NAME:URL is a set, where dropDownParts[0] is the name and dropDownParts[1] is the URL.
+
+                              EXAMPLE: foo:/foo;bar:/bar is a string that is two dropdown entries
+                              where the first entry is <a href="/foo">foo</a> and the second is <a href="/bar/">bar</a>
+
+                              We get this by first splitting at each ;. foo:/foo;bar:/bar becomes ['foo|/foo', 'bar|/bar']
+
+                              We then split each of those entries at :, as we do above.
+                        -->
+
+                        <% if (navbarEntry.dropdown != null) { %>
+                          <!-- split the string at each semi-colon to give us an array of NAME:URL -->
+                          <% var dropDownEntries = navbarEntry.dropdown.split(';') %>
+
+                            <ul>
+                              <% dropDownEntries.forEach( function (dropDownEntry) { %>
+
+                              <% var dropDownEntryParts = dropDownEntry.split('|') %>
+                                <li><a href="<%= dropDownEntryParts[1] %>"><%= dropDownEntryParts[0] %></a></li>
+                              <%  }); %><!-- end dropDownEntries.forEach -->
+
                             </ul>
 
-                        </li>
+                        <% } %><!-- end if -->
 
-                    <li><a href="#">Services</a></li>
-            
-                <li>
+                    </li>
 
-                    <a href="#">Products</a>
-                            
-                    <ul>
-                                <li><a href="#">Product One</a></li>
-                                <li><a href="#">Product Two</a></li>
-                                <li><a href="#">Product Three</a></li>
-                            </ul>
 
-                        </li>
-            
-                <li><a href="#">Contact</a></li>
-                </ul>
+            <% }); %><!-- end navbarEntries.forEach -->
 
-            
-            <div class="clear"></div>
-            </nav>
-        </div>
+        </ul><!-- end class="sf-menu dropdown" -->
 
-    <div class="clear"></div>
+        <div class="clear"></div>
+      </nav>
 
-       
-    </header>
+  </div><!-- end class="width" -->
+
+  <div class="clear"></div>       
+</header>
