@@ -11,16 +11,13 @@
           <!-- <li class="selected"> -->
 
           <!-- Navigation Entries forEach function. This takes the navbarEntries, which is an array containing all navbar objects and runs a function
-               for each entry.
-          -->
+               for each entry. -->
             <% navbarEntries.forEach( function (navbarEntry) { %>
 
-                <!-- 
-                  Our "header" is stored as NAME:URL for all entries. We are using a
-                  .split(':') to split this into a two part array. headerParts[0]
-                  will always be the name. headerParts[1] will always be the URL.
-                -->
-                    <% var headerParts = navbarEntry.header.split('|'); %>
+                <!-- Our "header" is stored as NAME:URL for all entries. We are using a
+                    .split(':') to split this into a two part array. headerParts[0]
+                    will always be the name. headerParts[1] will always be the URL. -->
+                    <% var headerParts = navbarEntry.header.split('|') %>
 
                     <li><!-- Begin the item list. We use <li> for each header entry -->
                         <a href="<%= headerParts[1] %>"><%= headerParts[0] %></a><!-- This is our header entry -->

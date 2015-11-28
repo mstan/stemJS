@@ -7,8 +7,10 @@ var sqlite3 = require('sqlite3');
 
 var getContentBySlug = require('./lib/getContentBySlug.js');
 var renderPageBySlug = require('./lib/renderPageBySlug.js');
-var getConfig = require('./lib/getConfig.js');
-var getNavBarFromDB = require('./lib/getNavbarFromDB.js');
+var getConfigFromDB = require('./lib/getConfigFromDB.js');
+var getNavbarFromDB = require('./lib/getNavbarFromDB.js');
+var getFooterFromDB = require('./lib/getFooterFromDB.js');
+var getSocialMediaFromDB = require('./lib/getSocialMediaFromDB.js');
 
 /*******************************
 *       Up & Running           *
@@ -30,10 +32,9 @@ app.use(function (req,res,next) {
   req.db = db; 
   next();
 });
-//Look up the database configuration each time so it can be passed along through res.locals.config
-app.use(getConfig);
+//Look up the database configuration each time for each
+app.use(getConfigFromDB, getNavbarFromDB, getFooterFromDB, getSocialMediaFromDB);
 //Look up navbar from the database so it can be passed to build the webpage
-app.use(getNavBarFromDB);
 //View Engine
 app.set('view engine', 'ejs');
 //Parameter based middleware
