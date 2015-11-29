@@ -1,14 +1,16 @@
 /*******************************
 *        Packages & Deps       *
 ********************************/
+//node modules
 var express = require('express');
 var ejs = require('ejs');
 var sqlite3 = require('sqlite3');
 
-var getContentBySlug = require('./lib/getContentBySlug.js');
-var renderPageBySlug = require('./lib/renderPageBySlug.js');
+//Personal lib
+var slugHandler = require('./lib/slugHandler.js');
 var getConfigsFromDB = require('./lib/getConfigsFromDB.js');
 
+//Admin control panel
 var admin = require('./admin.js');
 
 /*******************************
@@ -42,7 +44,7 @@ app.use('/admin', admin);
 //View Engine
 app.set('view engine', 'ejs');
 //Parameter based middleware
-app.param('slug', getContentBySlug);
+app.param('slug', slugHandler.getFromDB);
 
 /*******************************
 *           Routing            *
@@ -54,7 +56,7 @@ app.get('/', getConfigsFromDB.indexConfig, function (req,res) {
 });
 
 //Page by slug
-app.get('/pages/:slug', renderPageBySlug);
+app.get('/pages/:slug', slugHandler.renderPage);
 
 
 /*******************************
