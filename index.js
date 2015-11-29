@@ -7,10 +7,7 @@ var sqlite3 = require('sqlite3');
 
 var getContentBySlug = require('./lib/getContentBySlug.js');
 var renderPageBySlug = require('./lib/renderPageBySlug.js');
-var getConfigFromDB = require('./lib/getConfigFromDB.js');
-var getNavbarFromDB = require('./lib/getNavbarFromDB.js');
-var getFooterFromDB = require('./lib/getFooterFromDB.js');
-var getSocialMediaFromDB = require('./lib/getSocialMediaFromDB.js');
+var getConfigsFromDB = require('./lib/getConfigsFromDB.js');
 
 /*******************************
 *       Up & Running           *
@@ -33,8 +30,12 @@ app.use(function (req,res,next) {
   next();
 });
 //Look up the database configuration each time for each
-app.use(getConfigFromDB, getNavbarFromDB, getFooterFromDB, getSocialMediaFromDB);
-//Look up navbar from the database so it can be passed to build the webpage
+app.use(getConfigsFromDB.globalConfig,
+				getConfigsFromDB.navbarConfig, 
+				getConfigsFromDB.sidebarPrimaryConfig, 
+				getConfigsFromDB.sidebarSecondaryConfig,
+				getConfigsFromDB.footerConfig,
+				getConfigsFromDB.socialMediaConfig);
 //View Engine
 app.set('view engine', 'ejs');
 //Parameter based middleware
@@ -45,7 +46,7 @@ app.param('slug', getContentBySlug);
 ********************************/
 
 //Homepage
-app.get('/', function (req,res) {
+app.get('/', getConfigsFromDB.indexConfig, function (req,res) {
   res.render('deiform/index');
 });
 

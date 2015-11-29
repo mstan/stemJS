@@ -13,48 +13,54 @@
 <!-- navigation bar -->
 <%- include('./partials/navbar') %> 
 <!-- end navigation bar -->
+<!-- jumbotron -->
     <div id="intro">
         <div class="width">
             <div class="intro-content">
  
-                <h2><%= config.indexHeader %></h2>
-                <p><%= config.indexTagline %></p>
-                                  	
-                <p><a href="#" class="button button-slider"><i class="fa fa-gbp"></i>Order</a>
-				<a href="#" class="button button-reversed button-slider"><i class="fa fa-info"></i> Learn More</a></p>
+                <h2><%= indexConfig.header %></h2>
+                <p><%= indexConfig.tagline %></p>
+
+                <!-- Order Now and Learn More. If either of these are null, do not render either. -->
+                <% if (indexConfig.orderButton !== null && indexConfig.learnMoreButton !== null) { %>
+                    <p><a href="<%= indexConfig.orderButton %>" class="button button-slider"><i class="fa fa-gbp"></i>Order</a>
+    				<a href="<%= indexConfig.learnMoreButton %>" class="button button-reversed button-slider"><i class="fa fa-info"></i> Learn More</a></p>
+                <% } %>
                     
             </div><!-- class="intro-content" -->
         </div><!-- class="width" -->
 	</div><!-- id="intro" -->
+<!-- end jumbotron -->
 
+<!-- base article -->
     <div id="body" class="width">
 		<section id="content" class="two-column with-right-sidebar">
 		<article class="expanded">
 
-            		<h2><%= config.indexArticleHeader %></h2>
+            		<h2><%= indexConfig.articleHeader %></h2>
 
 			
-            <p><%- config.indexArticleContent %></p>
+            <p><%- indexConfig.articleContent %></p>
 
 		</article>
         </section>
+<!-- end base article -->
 
-        <!-- sidebars -->        
+<!-- sidebars -->        
         <aside class="sidebar big-sidebar right-sidebar">
             <ul>
-                 <%- include('./partials/sidebarPrimary') %>
-                 <%- include('./partials/sidebarSecondary') %>
+                 <%- include('./partials/sidebar') %>
             </ul>
         </aside>
-        <!-- end sidebars -->
+<!-- end sidebars -->
 
     	<div class="clear"></div>
     </div><!-- end id="body" -->
 </div><!-- end id="container" -->
 
-        <!-- footer -->
+<!-- footer -->
         <%- include('./partials/footer.ejs') %>
-        <!-- end footer -->
+<!-- end footer -->
 
 </body>
 </html>

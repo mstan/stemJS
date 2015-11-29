@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<!-- partials/sidebarPrimary.ejs -->
+<!--             <a class="selected" href="index.html">Home Page</a> -->
+<li>
+    <ul class="blocklist">
+        <!--  sidebarPrimarySections - object containing all the sidebar database objects
+              sidebarPrimarySection - object containing one of each sidebarSection object -->
+        <% sidebarPrimarySections.forEach( function (sidebarPrimarySection) { %>
+       		 <!-- sidebarPrimarySectionHeaderParts - Split the string into it's NAME and URL parts -->
+       		<% var sidebarPrimarySectionHeaderParts = sidebarPrimarySection.header.split('|') %>
+        		<li>
+        				<!-- Base entry -->
+        				<a href="<%= sidebarPrimarySectionHeaderParts[1] %>"><%= sidebarPrimarySectionHeaderParts[0] %></a>
+        						<!-- Build a subset of sub-link entries if the .links section is not null -->
+		        				<% if(sidebarPrimarySection.links !== null ) { %>
+		        						<ul>
+		        								<!-- sidebarPrimarySectionLinkEntries - Split the string of NAME|URL into a series of objects in an array,
+		        										 each consisting of a NAME|URL -->
+		        								<% var sidebarPrimarySectionLinkEntries = sidebarPrimarySection.links.split(';'); %>
+		        										<!-- Run a for each for each NAME|URL item -->
+		        										<% sidebarPrimarySectionLinkEntries.forEach( function (sidebarPrimarySectionLinkEntry) { %>
+																	<!-- sidebarPrimarySectionHeaderParts - Split the string into it's NAME and URL parts -->
+		        											<% var sidebarbarPrimarySectionLinkEntryParts = sidebarPrimarySectionLinkEntry.split('|'); %>
+		        													<li><a href="<%= sidebarbarPrimarySectionLinkEntryParts[1] %>"><%= sidebarbarPrimarySectionLinkEntryParts[0]  %></a></li>
+		        										<% }); %><!-- end sidebarPrimarySectionLinkEntries.forEach -->
+		        						</ul>	
+		        				<% } %><!-- end if -->
+        			</li>
+        <% }); %><!-- end footerEntries.forEach -->
+    </ul>
+</li>
+
+
+<!-- Secondary Sidebar -->
+
+
+<li>
+		<h4>External Links</h4>
+        <ul>
+        		<% sidebarSecondarySections.forEach (function (sidebarSecondarySection) { %>
+        				<li><a href="<%= sidebarSecondarySection.URL %>"><%= sidebarSecondarySection.name %></li>
+        		<% }); %>
+				</ul>
+</li>
