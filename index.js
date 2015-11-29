@@ -9,6 +9,8 @@ var getContentBySlug = require('./lib/getContentBySlug.js');
 var renderPageBySlug = require('./lib/renderPageBySlug.js');
 var getConfigsFromDB = require('./lib/getConfigsFromDB.js');
 
+var admin = require('./admin.js');
+
 /*******************************
 *       Up & Running           *
 ********************************/
@@ -36,6 +38,7 @@ app.use(getConfigsFromDB.globalConfig,
 				getConfigsFromDB.sidebarSecondaryConfig,
 				getConfigsFromDB.footerConfig,
 				getConfigsFromDB.socialMediaConfig);
+app.use('/admin', admin);
 //View Engine
 app.set('view engine', 'ejs');
 //Parameter based middleware

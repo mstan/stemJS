@@ -24,25 +24,25 @@
                 <!-- Order Now and Learn More. If either of these are null, do not render either. -->
                 <% if (indexConfig.orderButton !== null && indexConfig.learnMoreButton !== null) { %>
                     <p><a href="<%= indexConfig.orderButton %>" class="button button-slider"><i class="fa fa-gbp"></i>Order</a>
-    				<a href="<%= indexConfig.learnMoreButton %>" class="button button-reversed button-slider"><i class="fa fa-info"></i> Learn More</a></p>
+            <a href="<%= indexConfig.learnMoreButton %>" class="button button-reversed button-slider"><i class="fa fa-info"></i> Learn More</a></p>
                 <% } %>
                     
             </div><!-- class="intro-content" -->
         </div><!-- class="width" -->
-	</div><!-- id="intro" -->
+    </div><!-- id="intro" -->
 <!-- end jumbotron -->
 
 <!-- base article -->
     <div id="body" class="width">
-		<section id="content" class="two-column with-right-sidebar">
-		<article class="expanded">
+    <section id="content" class="two-column with-right-sidebar">
+    <article class="expanded">
 
-            		<h2><%= indexConfig.articleHeader %></h2>
+                <h2><%= indexConfig.articleHeader %></h2>
 
-			
+      
             <p><%- indexConfig.articleContent %></p>
 
-		</article>
+    </article>
         </section>
 <!-- end base article -->
 
@@ -54,7 +54,7 @@
         </aside>
 <!-- end sidebars -->
 
-    	<div class="clear"></div>
+      <div class="clear"></div>
     </div><!-- end id="body" -->
 </div><!-- end id="container" -->
 
