@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title><%= config.siteNavbar %> | Page Management</title>
+
+    <!-- Stylesheets -->
+    <%- include('./partials/styling.ejs') %>
+    <!-- End Stylesheeting -->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <!-- Top Menu Items -->
+            <%- include('./partials/navbar.ejs') %>
+            <!-- End Top Menu Items -->
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <%- include('./partials/sidebar') %>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <!-- End Navigation -->
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Page Management <small>Add, View, Modify, and Delete Webpages</small>
+                        </h1>
+                    </div><!-- col-lg 12 -->
+                </div><!-- /.row -->
+
+<!-- Begin Page Content -->
+                    <div class="col-lg-12">
+                        <h2>Pages Index</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                            <!-- Header. Describe Each Row -->
+                                <thead>
+                                    <tr>
+                                        <th>Page</th>
+                                        <th>View</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                            <!-- Each Row. Pull from pagesBySlug -->
+                                <tbody>
+                                        <% pagesBySlug.forEach( function (pageBySlug) { %>
+                                    <tr>
+                                        <td> <%= pageBySlug.slug %> </td>
+                                        <td> <a href="/pages/<%= pageBySlug.slug %>">Link</a></td><!-- view -->
+                                        <td> <a href="pages/edit/<%= pageBySlug.slug %>">Edit</a></td><!-- edit -->
+                                        <td></td><!-- Delete -->
+                                    </tr>
+                                        <% }); %>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+ <!-- End Page Content -->
+
+            </div><!-- /container-fluid -->
+        </div><!-- /#page-wrapper -->
+    </div><!-- /#wrapper -->
+
+    <!-- JS -->
+    <%- include('./partials/javascript.ejs') %>
+    <!-- End JS -->
+
+</body>
+
+</html>

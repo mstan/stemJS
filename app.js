@@ -1,7 +1,7 @@
 /*******************************
 *        Packages & Deps       *
 ********************************/
-//node modules
+//Node modules
 var express = require('express');
 var ejs = require('ejs');
 var sqlite3 = require('sqlite3');
@@ -22,7 +22,6 @@ var app = express();
 dbFile = "./db.sqlite";
 var db = new sqlite3.Database(dbFile);
 
-
 /*******************************
 *       Middleware             *
 ********************************/
@@ -40,11 +39,12 @@ app.use(getConfigsFromDB.globalConfig,
 				getConfigsFromDB.sidebarSecondaryConfig,
 				getConfigsFromDB.footerConfig,
 				getConfigsFromDB.socialMediaConfig);
-app.use('/admin', admin);
-//View Engine
+//Set view Engine
 app.set('view engine', 'ejs');
 //Parameter based middleware
 app.param('slug', slugHandler.getFromDB);
+//Redirect all /admin routes to be handled by route.js
+app.use('/admin', admin);
 
 /*******************************
 *           Routing            *
@@ -56,7 +56,10 @@ app.get('/', getConfigsFromDB.indexConfig, function (req,res) {
 });
 
 //Page by slug
-app.get('/pages/:slug', slugHandler.renderPage);
+app.get('/pages/:slug', function (req,res) {
+  page = req.page;
+  res.render('deiform/one-column.ejs');
+});
 
 
 /*******************************

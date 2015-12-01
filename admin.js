@@ -1,14 +1,42 @@
+/*******************************
+*        Packages & Deps       *
+********************************/
 var express = require('express'); 
-var ejs = require('ejs');
+var slugHandler = require('./lib/slugHandler.js');
 
+/*******************************
+*       Up & Running           *
+********************************/
 var admin = express(); 
 
-admin.set('view engine', 'ejs');
+/*******************************
+*       Middleware             *
+********************************/
+//Parameter based middleware
+admin.param('slug', slugHandler.getFromDB);
 
-//This is equivalent to /admin/. All /admin routes are redirected to this route system.
+
+/*******************************
+*           Routing            *
+*	all routes are prefixed with *
+*	/admin/ 										 *
+********************************/
 admin.get('/', function (req,res) {
-	res.send('hello admin!');
+	res.render('sbAdmin/index.ejs');
 });
 
+admin.get('/pages', slugHandler.listAllPagesBySlug, function (req,res) {
+	res.render('sbAdmin/pages.ejs');
+});
 
+admin.get('/pages/edit/:slug', function (req,res) {
+  page = req.page;
+  res.render('sbAdmin/editPage.ejs');
+});
+
+admin.get('/blank', slugHandler.listAllPagesBySlug, function (req,res) {
+	res.render('sbAdmin/blank.ejs');
+});
+
+//Export admin module
 module.exports = admin;

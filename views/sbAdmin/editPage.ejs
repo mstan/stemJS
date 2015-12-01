@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title><%= config.siteNavbar %> | Page Editor</title>
+
+    <!-- Stylesheets -->
+    <%- include('./partials/styling.ejs') %>
+    <!-- End Stylesheeting -->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <!-- Top Menu Items -->
+            <%- include('./partials/navbar.ejs') %>
+            <!-- End Top Menu Items -->
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <%- include('./partials/sidebar') %>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <!-- End Navigation -->
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            <%= page.slug %> <small>Edit</small>
+                        </h1>
+                    </div><!-- col-lg 12 -->
+                </div><!-- /.row -->
+                <!-- End Page Heading -->
+
+<!-- Begin Page Content -->
+                <form role="form" action="/editPage" method="POST">
+                    <!-- page.navbarTitle -->
+                    <div class="col-lg-6">
+                    
+                            <div class="form-group">
+                                <label>Navigation Bar Title</label>
+                                <input class="form-control" name="navbarTitle" value="<%= page.navbarTitle %>">
+                                <p class="help-block">This is what will appear at the top of the webpage tab.</p>
+                            </div>
+                            
+                    </div><!-- col-lg-6 -->
+                    <!-- end navbarTitle -->
+
+                    <div class="col-lg-6">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Article Title</label>
+                                <input class="form-control" name="articleHeader" value="<%= page.articleHeader %>">
+                                <p class="help-block">This is the name of the page's article.</p>
+                            </div>   
+                    </div><!-- col-log-6 -->
+
+                    <div class="col-lg-12" >
+                            <div class="form-group">
+                                <label>Article Content</label>
+                                <textarea class="form-control" rows="3" name="articleContent"><%=  page.articleContent %></textarea>
+                            </div>
+                    </div><!-- col-lg-12" >
+                </form>                     
+            
+
+
+            </div><!-- /container-fluid -->
+ <!-- End Page Content -->
+        </div><!-- /#pager-wrapper -->
+    </div><!-- /#wrapper -->
+
+    <!-- JS -->
+    <%- include('./partials/javascript.ejs') %>
+    <!-- End JS -->
+
+</body>
+
+</html>
