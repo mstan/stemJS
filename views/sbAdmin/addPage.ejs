@@ -29,23 +29,23 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            <%= page.slug %> <small>Edit</small>
+                            Add New Page
                         </h1>
                     </div><!-- col-lg 12 -->
                 </div><!-- /.row -->
                 <!-- End Page Heading -->
 
 <!-- Begin Page Content -->
-                <form role="form" action="/admin/pages/edit" method="POST">
+                <form role="form" action="/admin/pages/add" method="POST">
 
                     <!-- page.slug -->
                     <div class="col-lg-4">
                         <form role="form">
                             <div class="form-group">
                                 <label>Page Slug <small>(You can't change this.)</small></label>
-                                <input class="form-control" readonly name="slug" value="<%= page.slug %>">
+                                <input class="form-control" name="slug">
                                 <p class="help-block">
-                                    Page slug. Used to access the page.
+                                    Page slug. Used to access the page. Make this short and sweet. No spaces.
                                 </p>
                             </div>   
                     </div><!-- col-log-6 -->
@@ -56,7 +56,7 @@
                     
                             <div class="form-group">
                                 <label>Navigation Bar Title</label>
-                                <input class="form-control" name="navbarTitle" value="<%= page.navbarTitle %>">
+                                <input class="form-control" name="navbarTitle">
                                 <p class="help-block">This is what will appear at the top of the webpage tab.</p>
                             </div>
                             
@@ -68,7 +68,7 @@
                         <form role="form">
                             <div class="form-group">
                                 <label>Article Title</label>
-                                <input class="form-control" name="articleHeader" value="<%= page.articleHeader %>">
+                                <input class="form-control" name="articleHeader">
                                 <p class="help-block">This is the name of the page's article.</p>
                             </div>   
                     </div><!-- col-log-6 -->
@@ -79,10 +79,10 @@
                     <div class="col-lg-12" >
                             <div class="form-group">
                                 <label>Article Content</label>
-                                <textarea class="form-control" rows="3" name="articleContent"><%=  page.articleContent %></textarea>
+                                <textarea class="form-control" rows="3" name="articleContent"></textarea>
                             </div>
                     </div><!-- col-lg-12" -->
-                    <input type="submit" value="Update">
+                    <input type="submit" value="Publish">
                 </form>                     
             
 

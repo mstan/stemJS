@@ -5,6 +5,7 @@
 var express = require('express');
 var ejs = require('ejs');
 var sqlite3 = require('sqlite3');
+var bodyParser = require('body-parser');
 
 //Personal lib
 var slugHandler = require('./lib/slugHandler.js');
@@ -32,19 +33,23 @@ app.use(function (req,res,next) {
   req.db = db; 
   next();
 });
-//Look up the database configuration each time for each
-app.use(getConfigsFromDB.globalConfig,
-				getConfigsFromDB.navbarConfig, 
-				getConfigsFromDB.sidebarPrimaryConfig, 
-				getConfigsFromDB.sidebarSecondaryConfig,
-				getConfigsFromDB.footerConfig,
-				getConfigsFromDB.socialMediaConfig);
 //Set view Engine
 app.set('view engine', 'ejs');
 //Parameter based middleware
 app.param('slug', slugHandler.getFromDB);
+//Body Parser
+app.use(bodyParser.urlencoded({ extended: false }));
+//Global config - This is called before /admin because it is also used in admin
+app.use(getConfigsFromDB.globalConfig);
 //Redirect all /admin routes to be handled by route.js
 app.use('/admin', admin);
+//Look up the database configuration each time for each for user pages. This called after /admin
+//because admin does not need these and these are not called if redirected to admin
+app.use(getConfigsFromDB.navbarConfig, 
+				getConfigsFromDB.sidebarPrimaryConfig, 
+				getConfigsFromDB.sidebarSecondaryConfig,
+				getConfigsFromDB.footerConfig,
+				getConfigsFromDB.socialMediaConfig);
 
 /*******************************
 *           Routing            *
