@@ -4,17 +4,36 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
     
+        <!-- Dashboard -->
         <li class="active">
             <a href="/admin/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-        </li>
+        </li>     
+        <!-- End Dashboard -->
 
+        <!-- Navigation -->
         <li>
-            <a href="/admin/pages"><i class="fa fa-fw fa-edit"></i> Page Management</a>
-        </li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#navigation"><i class="fa fa-fw fa-arrows-v"></i> Navigation<i class="fa fa-fw fa-caret-down"></i></a>
+            <ul id="navigation" class="collapse">
+                <li>
+                    <a href="/admin/navigation/navbar">Navigation Bar</a>
+                </li>
+                <li>
+                    <a href="/admin/navigation/sidebarPrimary">Primary Sidebar</a>
+                </li>
+                <li>
+                    <a href="/admin/navigation/sidebarSecondary">Secondary Sidebar</a>
+                </li>   
+                <li>
+                    <a href="/admin/navigation/footer">Footer</a>
+                </li>                               
+            </ul>
+        </li>           
+        <!-- End Navigation -->  
 
+        <!-- Pages -->
         <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Pages<i class="fa fa-fw fa-caret-down"></i></a>
-            <ul id="demo" class="collapse">
+            <a href="javascript:;" data-toggle="collapse" data-target="#pages"><i class="fa fa-fw fa-edit"></i> Pages<i class="fa fa-fw fa-caret-down"></i></a>
+            <ul id="pages" class="collapse">
                 <li>
                     <a href="/admin/pages/add">Add New</a>
                 </li>
@@ -24,14 +43,12 @@
             </ul>
         </li>
 
+        <!-- End Pages -->      
 
+        <!-- User Account -->
         <li>
-            <a href="/admin/blank"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-        </li>
-
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-            <ul id="demo" class="collapse">
+            <a href="javascript:;" data-toggle="collapse" data-target="#account"><i class="fa fa-fw fa-desktop"></i> User Account<i class="fa fa-fw fa-caret-down"></i></a>
+            <ul id="account" class="collapse">
                 <li>
                     <a href="#">Dropdown Item</a>
                 </li>
@@ -39,7 +56,9 @@
                     <a href="#">Dropdown Item</a>
                 </li>
             </ul>
-        </li>
+        </li>           
+        <!-- End User Account -->
+
                         
     </ul>
 </div><!-- /.navbar-collapse -->
