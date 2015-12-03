@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title><%= config.siteNavbar %> | Admin</title>
-
+    <title><%= config.siteNavbar %> | Social Media</title>
     <!-- Stylesheets -->
-    <%- include('./partials/styling.ejs') -%>
+    <%- include('./partials/styling.ejs') %>
     <!-- End Stylesheeting -->
-
 </head>
 
 <body>
     <div id="wrapper">
-
-<!-- Navigation -->
+        <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
             <!-- Top Menu Items -->
             <%- include('./partials/navbar.ejs') %>
             <!-- End Top Menu Items -->
@@ -22,38 +20,27 @@
             <%- include('./partials/sidebar') %>
             <!-- /.navbar-collapse -->
         </nav>
+        <!-- End Navigation -->
 
         <div id="page-wrapper">
             <div class="container-fluid">
-            
+
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Dashboard <small>Statistics Overview</small>
+                            Edit Social Media
                         </h1>
                     </div><!-- col-lg 12 -->
                 </div><!-- /.row -->
                 <!-- End Page Heading -->
 
-<!-- Page Content -->
-
-
-
-
-
-
-
-<!-- End Page Content -->
-
-            </div><!-- /.container-fluid -->
-        </div><!-- /#page-wrapper -->
-    </div><!-- /#wrapper -->
+            </div><!-- /#pager-wrapper -->
+        </div><!-- /#wrapper -->
 
     <!-- JS -->
     <%- include('./partials/javascript.ejs') %>
     <!-- End JS -->
 
 </body>
-
 </html>

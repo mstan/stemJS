@@ -78,10 +78,17 @@ admin.get('/navigation/sidebarSecondary', getConfigsFromDB.sidebarSecondaryConfi
 admin.post('/navigation/sidebarSecondary/', navigationHandler.updateSidebarSecondary);
 
 //Footer
-admin.get('/navigation/footer', getConfigsFromDB.footerConfig, function (req,res) {
+admin.get('/navigation/footer', getConfigsFromDB.footerConfig, getConfigsFromDB.socialMediaConfig, function (req,res) {
 	res.render('sbAdmin/editFooter.ejs');
 });
 admin.post('/navigation/footer/', navigationHandler.updateFooter);
+admin.post('/navigation/socialMedia/', navigationHandler.updateSocialMedia);
+
+//Social Media
+admin.get('/navigation/socialMedia', getConfigsFromDB.footerConfig, getConfigsFromDB.socialMediaConfig, function (req,res) {
+	res.render('sbAdmin/editSocialMedia.ejs');
+});
+admin.post('/navigation/socialMedia/', navigationHandler.updateSocialMedia);
 
 
 //Export admin module
