@@ -59,11 +59,11 @@ admin.get('/pages/delete/:slug', slugHandler.deletePageBySlug); //end admin.get
 *     Routing - Navigation     *
 ********************************/
 
-//Footer
-admin.get('/navigation/footer', getConfigsFromDB.footerConfig, function (req,res) {
-	res.render('sbAdmin/editFooter.ejs');
+//Header
+admin.get('/navigation/navbar', getConfigsFromDB.navbarConfig, function (req,res) {
+	res.render('sbAdmin/editNavbar.ejs');
 });
-admin.post('/navigation/footer/', navigationHandler.updateFooter);
+admin.post('/navigation/navbar', navigationHandler.updateNavbar);
 
 //Sidebar Primary
 admin.get('/navigation/sidebarPrimary', getConfigsFromDB.sidebarPrimaryConfig, function (req,res) {
@@ -71,11 +71,17 @@ admin.get('/navigation/sidebarPrimary', getConfigsFromDB.sidebarPrimaryConfig, f
 });
 admin.post('/navigation/sidebarPrimary/', navigationHandler.updateSidebarPrimary);
 
-//Header
-admin.get('/navigation/navbar', getConfigsFromDB.navbarConfig, function (req,res) {
-	res.render('sbAdmin/editNavbar.ejs');
+//Sidebar Secondary
+admin.get('/navigation/sidebarSecondary', getConfigsFromDB.sidebarSecondaryConfig, function (req,res) {
+	res.render('sbAdmin/editSidebarSecondary.ejs');
 });
-admin.post('/navigation/navbar', navigationHandler.updateNavbar);
+admin.post('/navigation/sidebarSecondary/', navigationHandler.updateSidebarSecondary);
+
+//Footer
+admin.get('/navigation/footer', getConfigsFromDB.footerConfig, function (req,res) {
+	res.render('sbAdmin/editFooter.ejs');
+});
+admin.post('/navigation/footer/', navigationHandler.updateFooter);
 
 
 //Export admin module
