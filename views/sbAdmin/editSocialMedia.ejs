@@ -35,6 +35,41 @@
                 </div><!-- /.row -->
                 <!-- End Page Heading -->
 
+                <form role="form" action="/admin/navigation/socialMedia" method="POST">
+
+
+                    <!-- Links -->
+                    <div class="col-lg-12" style="padding-bottom:50px">
+                        <div class="col-lg-8"> 
+                            <label><small>Header</small></label>  
+                            <input class="form-control" name="header" placeholder="Name" value="<%= socialMedia.header %>">
+                            <label><small>Description</small></label>  
+                            <textarea class="form-control" rows="1" name="description"><%= socialMedia.description %></textarea>     
+                            <label><small>Facebook</small></label>  
+                            <input class="form-control" name="facebookURL" placeholder="" value="<%= socialMedia.facebookURL %>">
+                            <label><small>Twitter</small></label>  
+                            <input class="form-control" name="twitterURL" placeholder="" value="<%= socialMedia.twitterURL %>">
+                            <label><small>YouTube</small></label>  
+                            <input class="form-control" name="youTubeURL" placeholder="" value="<%= socialMedia.youTubeURL %>">
+                            <label><small>Instagram</small></label>  
+                            <input class="form-control" name="instagramURL" placeholder="" value="<%= socialMedia.instagramURL %>">                                                   
+                        </div>
+                    </div><!-- end col-lg-12 -->                          
+                    <!-- End Links -->
+
+
+  
+                    <!-- submit button -->
+                    <div class="col-lg-12">
+                        <input type="submit" value="Update">
+                    </div><!-- col-lg 12 -->
+                    <!-- end submit button -->
+                                   
+
+
+
+                </form><!-- end -->                      
+
             </div><!-- /#pager-wrapper -->
         </div><!-- /#wrapper -->
 
