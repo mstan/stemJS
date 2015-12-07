@@ -11,14 +11,11 @@
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
 
             <!-- Top Menu Items -->
             <%- include('./partials/navbar.ejs') %>
-            <!-- End Top Menu Items -->
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <!-- Sidebar -->
             <%- include('./partials/sidebar') %>
-            <!-- /.navbar-collapse -->
         </nav>
         <!-- End Navigation -->
 
@@ -31,11 +28,11 @@
                         <h1 class="page-header">
                             <%= page.slug %> <small>Edit</small>
                         </h1>
-                    </div><!-- col-lg 12 -->
-                </div><!-- /.row -->
+                    </div>
+                </div>
                 <!-- End Page Heading -->
 
-<!-- Begin Page Content -->
+                <!-- Begin Page Content -->
                 <form role="form" action="/admin/pages/edit" method="POST">
 
                     <!-- page.slug -->
@@ -48,7 +45,7 @@
                                     Page slug. Used to access the page.
                                 </p>
                             </div>   
-                    </div><!-- col-log-6 -->
+                    </div>
                     <!-- end page.slug -->
                                    
                     <!-- page.navbarTitle -->
@@ -60,7 +57,7 @@
                                 <p class="help-block">This is what will appear at the top of the webpage tab.</p>
                             </div>
                             
-                    </div><!-- col-lg-6 -->
+                    </div>
                     <!-- end navbarTitle -->
 
                     <!-- page.articleTitle -->
@@ -71,18 +68,25 @@
                                 <input class="form-control" name="articleHeader" value="<%= page.articleHeader %>">
                                 <p class="help-block">This is the name of the page's article.</p>
                             </div>   
-                    </div><!-- col-log-6 -->
+                    </div>
                     <!-- end articleTitle -->
 
 
-
+                    <!-- page.articleContent -->
                     <div class="col-lg-12" >
-                            <div class="form-group">
-                                <label>Article Content</label>
-                                <textarea class="form-control" rows="3" name="articleContent"><%=  page.articleContent %></textarea>
-                            </div>
-                    </div><!-- col-lg-12" -->
-                    <input type="submit" value="Update">
+                        <div class="form-group">
+                            <label>Article Content</label>
+                            <textarea class="form-control" rows="3" name="articleContent"><%=  page.articleContent %></textarea>
+                        </div>
+                    </div>
+                    <!-- end articleContent -->
+
+                    <!-- submit button -->
+                    <div class="col-lg-12" align="center">
+                        <input class="btn btn-lg btn-success"  type="submit" value="Update">
+                    </div>
+                    <!-- end submit button -->  
+
                 </form>                     
             
 

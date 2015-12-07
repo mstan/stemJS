@@ -9,16 +9,14 @@
 
 <body>
     <div id="wrapper">
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
 
             <!-- Top Menu Items -->
             <%- include('./partials/navbar.ejs') %>
-            <!-- End Top Menu Items -->
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <!-- Sidebar -->
             <%- include('./partials/sidebar') %>
-            <!-- /.navbar-collapse -->
         </nav>
         <!-- End Navigation -->
 
@@ -31,58 +29,62 @@
                         <h1 class="page-header">
                             Add New Page
                         </h1>
-                    </div><!-- col-lg 12 -->
-                </div><!-- /.row -->
+                    </div>
+                </div>
                 <!-- End Page Heading -->
 
-<!-- Begin Page Content -->
                 <form role="form" action="/admin/pages/add" method="POST">
 
                     <!-- page.slug -->
                     <div class="col-lg-4">
                         <form role="form">
                             <div class="form-group">
-                                <label>Page Slug <small>(You can't change this.)</small></label>
+                                <label>Page Slug</label>
                                 <input class="form-control" name="slug">
                                 <p class="help-block">
-                                    Page slug. Used to access the page. Make this short and sweet. No spaces.
+                                    Used to identify the page.
+                                    You can't change this later!
                                 </p>
                             </div>   
-                    </div><!-- col-log-6 -->
+                    </div>
                     <!-- end page.slug -->
                                    
                     <!-- page.navbarTitle -->
                     <div class="col-lg-4">
-                    
-                            <div class="form-group">
-                                <label>Navigation Bar Title</label>
-                                <input class="form-control" name="navbarTitle">
-                                <p class="help-block">This is what will appear at the top of the webpage tab.</p>
-                            </div>
-                            
-                    </div><!-- col-lg-6 -->
+                        <div class="form-group">
+                            <label>Navigation Bar Title</label>
+                            <input class="form-control" name="navbarTitle">
+                            <p class="help-block">This is what will appear at the top of the webpage tab.</p>
+                        </div>    
+                    </div>
                     <!-- end navbarTitle -->
 
                     <!-- page.articleTitle -->
                     <div class="col-lg-4">
-                        <form role="form">
-                            <div class="form-group">
-                                <label>Article Title</label>
-                                <input class="form-control" name="articleHeader">
-                                <p class="help-block">This is the name of the page's article.</p>
-                            </div>   
-                    </div><!-- col-log-6 -->
+                        <div class="form-group">
+                            <label>Article Title</label>
+                            <input class="form-control" name="articleHeader">
+                            <p class="help-block">This is the name of the page's article.</p>
+                        </div>   
+                    </div>
                     <!-- end articleTitle -->
 
-
-
+                    <!-- page.articleContent -->
                     <div class="col-lg-12" >
-                            <div class="form-group">
-                                <label>Article Content</label>
-                                <textarea class="form-control" rows="3" name="articleContent"></textarea>
-                            </div>
-                    </div><!-- col-lg-12" -->
-                    <input type="submit" value="Publish">
+                        <div class="form-group">
+                            <label>Article Content</label>
+                            <textarea class="form-control" rows="3" name="articleContent"></textarea>
+                        </div>
+                    </div>
+                    <!-- end page.articleContent -->
+
+
+                    <!-- submit button -->
+                    <div class="col-lg-12" align="center">
+                        <input class="btn btn-lg btn-success"  type="submit" value="Publish">
+                    </div>
+                    <!-- end submit button -->  
+
                 </form>                     
             
 

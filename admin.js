@@ -40,7 +40,7 @@ admin.get('/', function (req,res) {
 
 //Pull all entries from the database by their slug
 admin.get('/pages', slugHandler.listAllPagesBySlug, function (req,res) {
-  res.render('sbAdmin/pages.ejs');
+  res.render('sbAdmin/editPages.ejs');
 });
 
 admin.get('/pages/add', function (req,res) {
@@ -94,7 +94,8 @@ admin.get('/navigation/footer', getConfigsFromDB.footerConfig, function (req,res
   res.render('sbAdmin/editFooter.ejs');
 });
 admin.post('/navigation/footer/', navigationHandler.updateFooter);
-admin.post('/navigation/socialMedia/', navigationHandler.updateSocialMedia);
+admin.get('/navigation/footer/delete/:id', navigationHandler.deleteFromFooterByID);
+admin.post('/navigation/footer/add', navigationHandler.addFooter);
 
 //Social Media
 admin.get('/navigation/socialMedia', getConfigsFromDB.socialMediaConfig, function (req,res) {

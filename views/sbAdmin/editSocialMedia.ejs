@@ -11,14 +11,11 @@
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
 
             <!-- Top Menu Items -->
             <%- include('./partials/navbar.ejs') %>
-            <!-- End Top Menu Items -->
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <!-- Sidebar -->
             <%- include('./partials/sidebar') %>
-            <!-- /.navbar-collapse -->
         </nav>
         <!-- End Navigation -->
 
@@ -31,8 +28,8 @@
                         <h1 class="page-header">
                             Edit Social Media
                         </h1>
-                    </div><!-- col-lg 12 -->
-                </div><!-- /.row -->
+                    </div>
+                </div>
                 <!-- End Page Heading -->
 
                 <form role="form" action="/admin/navigation/socialMedia" method="POST">
@@ -54,23 +51,18 @@
                             <label><small>Instagram</small></label>  
                             <input class="form-control" name="instagramURL" placeholder="" value="<%= socialMedia.instagramURL %>">                                                   
                         </div>
-                    </div><!-- end col-lg-12 -->                          
+                    </div>                         
                     <!-- End Links -->
 
-
-  
                     <!-- submit button -->
                     <div class="col-lg-12" align="center">
                         <input class="btn btn-lg btn-success" type="submit" value="Update">
                     </div><!-- col-lg 12 -->
                     <!-- end submit button -->
-                                   
 
+                </form>                    
 
-
-                </form><!-- end -->                      
-
-            </div><!-- /#pager-wrapper -->
+            </div><!-- /#page-wrapper -->
         </div><!-- /#wrapper -->
 
     <!-- JS -->
