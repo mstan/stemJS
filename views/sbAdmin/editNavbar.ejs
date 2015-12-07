@@ -9,23 +9,20 @@
 
 <body>
     <div id="wrapper">
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Top Menu Items -->
+            <!-- Top Menu -->
             <%- include('./partials/navbar.ejs') %>
-            <!-- End Top Menu Items -->
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <!-- Sidebar -->
             <%- include('./partials/sidebar') %>
-            <!-- /.navbar-collapse -->
         </nav>
         <!-- End Navigation -->
 
         <div id="page-wrapper">
             <div class="container-fluid">
 
-                <!-- Page Heading -->
+                <!-- Edit Navbar Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -33,58 +30,109 @@
                         </h1>
                     </div><!-- col-lg 12 -->
                 </div><!-- /.row -->
-                <!-- End Page Heading -->
+                <!-- End Edit Navbar Heading -->
 
-<!-- Begin Page Content -->
+                <!-- Edit Navbar Form -->
                 <form role="form" action="/admin/navigation/navbar" method="POST">
 
-                <% navbarEntries.forEach (function (navbarEntry) { %>
-                <div class="col-lg-12 table table-bordered"><!-- Contain all subsets -->
-                    <!-- Header -->                
-                    <div class="col-lg-12">
-                        <div class="col-lg-3">
-                             <label><small>Header</small></label>
-                             <input class="hidden" name="id" value="<%= navbarEntry.id %>" readonly >
-                             <input class="form-control" placeholder="Header" name="header" value="<%= navbarEntry.header %>">
-                        </div>
-                    </div><!-- end col-lg-12 -->      
-                    <!-- End Header -->
+                    <% navbarEntries.forEach (function (navbarEntry) { %>
+                    <div class="col-lg-12 table table-bordered">
 
-                    <!-- Links -->
-                    <div class="col-lg-12" style="padding-bottom:50px">
-                        <div class="col-lg-8">   
-                            <textarea class="form-control" rows="1" placeholder="NAME|URL;NAME|URL;...NAME|URL" name="dropdown"><%= navbarEntry.dropdown %></textarea>
-                        </div>
-                    </div><!-- end col-lg-12 -->                          
-                    <!-- End Links -->
+                        <!-- Header -->                
+                        <div class="col-lg-12">
+                            <div class="col-lg-3">
+                                 <label><small>Header</small></label>
+                                 <input class="hidden" name="id" value="<%= navbarEntry.id %>" readonly >
+                                 <input class="form-control" placeholder="Header" name="header" value="<%= navbarEntry.header %>">
+                            </div>
+                        </div>      
+                        <!-- End Header -->
 
-                    <!-- Priority -->
-                    <div class="col-lg-12" style="padding-bottom:50px">
-                         <div class="col-lg-1">
-                             <label><small>Priority</small></label>
-                            <input class="form-control" name="priority" value="<%= navbarEntry.priority %>">
-                         </div>                       
-                    </div><!-- end col-lg-12 -->
-                    <!-- End Priority -->            
-                           
-                </div><!-- end contain all subsets -->        
-                <% }); %><!-- end footerSections.forEach -->
-  
+                        <!-- Dropdown -->
+                        <div class="col-lg-12" style="padding-bottom:50px">
+                            <div class="col-lg-8">   
+                                <textarea class="form-control" rows="1" placeholder="NAME|URL;NAME|URL;...NAME|URL" name="dropdown"><%= navbarEntry.dropdown %></textarea>
+                            </div>
+                        </div>                   
+                        <!-- Dropdown -->
+
+                        <!-- Priority -->
+                        <div class="col-lg-12" style="padding-bottom:50px">
+                             <div class="col-lg-1">
+                                 <label><small>Priority</small></label>
+                                <input class="form-control" name="priority" value="<%= navbarEntry.priority %>">
+                             </div>                       
+                        </div><!-- end col-lg-12 -->
+                        <!-- End Priority -->   
+
+                         <!-- Delete -->
+                        <div class="col-lg-12" style="padding-bottom:50px" align="right">
+                            <a class="btn btn-sm btn-danger" href="/admin/navigation/navbar/delete/<%= navbarEntry.id %>">Delete</a>  
+                        </div>
+                        <!-- End Delete -->
+
+                    </div>       
+                    <% }); %><!-- end navbarEntries.forEach -->
+      
                     <!-- submit button -->
-                    <div class="col-lg-12">
-                        <input type="submit" value="Update">
+                    <div class="col-lg-12" align="center" style="padding-bottom:50px">
+                        <input class="btn btn-lg btn-success" type="submit" value="Update">
                     </div><!-- col-lg 12 -->
-                    <!-- end submit button -->
-                                   
+                        <!-- end submit button -->
+                                       
+                </form>
+                <!-- End Edit Navbar Form -->  
 
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Add New
+                        </h1>
+                    </div><!-- col-lg 12 -->
+                </div><!-- /.row -->
+                <!-- End Page Heading -->                   
 
+                <form role="form" action="/admin/navigation/navbar/add" method="POST">
+                    <div class="col-lg-12 table table-bordered">
 
-                </form><!-- end -->                   
+                        <!-- Header -->                
+                        <div class="col-lg-12">
+                            <div class="col-lg-3">
+                                 <label><small>Header</small></label>
+                                 <input class="form-control" name="header" placeholder="Header|URL">
+                            </div>
+                        </div>    
+                        <!-- End Header -->
+
+                        <!-- Dropdown -->
+                        <div class="col-lg-12" style="padding-bottom:50px">
+                            <div class="col-lg-8">   
+                                <textarea class="form-control" placeholder="NAME|URL;NAME|URL;...NAME|URL" rows="1" name="dropdown"></textarea>
+                            </div>
+                        </div>                        
+                        <!-- Dropdown -->
+
+                        <!-- Priority -->
+                        <div class="col-lg-12" style="padding-bottom:50px">
+                             <div class="col-lg-1">
+                                 <label><small>Priority</small></label>
+                                <input class="form-control" name="priority" value="">
+                             </div>                       
+                        </div>
+                        <!-- End Priority -->  
+
+                    </div><!-- end table-bordered -->
+
+                    <!-- submit button -->
+                    <div class="col-lg-12" align="center">
+                        <input class="btn btn-lg btn-success"  type="submit" value="Add New">
+                    </div>
+                    <!-- end submit button -->                
+                </form>                                   
             
 
             </div><!-- /container-fluid -->
- <!-- End Page Content -->
-
         </div><!-- /#pager-wrapper -->
     </div><!-- /#wrapper -->
 

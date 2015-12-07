@@ -13,6 +13,8 @@ var getConfigsFromDB = require('./lib/getConfigsFromDB.js');
 
 //Admin control panel
 var admin = require('./admin.js');
+//authentication
+var auth = require('./auth.js');
 
 /*******************************
 *       Up & Running           *
@@ -43,6 +45,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(getConfigsFromDB.globalConfig);
 //Redirect all /admin routes to be handled by route.js
 app.use('/admin', admin);
+//Redirect all /admin routes to be handled by route.js
+app.use('/auth', auth);
 //Look up the database configuration each time for each for user pages. This called after /admin
 //because admin does not need these and these are not called if redirected to admin
 app.use(getConfigsFromDB.navbarConfig, 

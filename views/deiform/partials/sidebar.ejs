@@ -12,7 +12,7 @@
                 <!-- Base entry -->
                 <a href="<%= sidebarPrimarySectionHeaderParts[1] %>"><%= sidebarPrimarySectionHeaderParts[0] %></a>
                     <!-- Build a subset of sub-link entries if the .links section is not null -->
-                    <% if(sidebarPrimarySection.links !== null ) { %>
+                    <% if(sidebarPrimarySection.links.length !== 0 ) { %>
                         <ul>
                             <!-- sidebarPrimarySectionLinkEntries - Split the string of NAME|URL into a series of objects in an array,
                                  each consisting of a NAME|URL -->

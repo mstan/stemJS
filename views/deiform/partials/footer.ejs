@@ -30,10 +30,10 @@
                 <li><%= socialMedia.description %></li>
                 <br/><br/>
                 <div class="social-icons">
-                    <a href="<%= socialMedia.facebookURL %>"><i class="fa fa-facebook fa-2x"></i></a>
-                    <a href="<%= socialMedia.twitterURL %>"><i class="fa fa-twitter fa-2x"></i></a>
-                    <a href="<%= socialMedia.youTubeURL %>"><i class="fa fa-youtube fa-2x"></i></a>
-                    <a href="<%= socialMedia.instagramURL %>"><i class="fa fa-instagram fa-2x"></i></a>
+                    <% if(socialMedia.facebookURL.length !== 0) { %> <a href="<%= socialMedia.facebookURL %>"><i class="fa fa-facebook fa-2x"></i></a> <% } %>
+                    <% if(socialMedia.twitterURL.length !== 0) { %><a href="<%= socialMedia.twitterURL %>"><i class="fa fa-twitter fa-2x"></i></a> <% } %>
+                    <% if(socialMedia.youTubeURL.length !== 0) { %><a href="<%= socialMedia.youTubeURL %>"><i class="fa fa-youtube fa-2x"></i></a> <% } %>
+                    <% if(socialMedia.instagramURL.length !== 0) { %><a href="<%= socialMedia.instagramURL %>"><i class="fa fa-instagram fa-2x"></i></a> <% } %>
                 </div>
             </ul><!-- end class="endfooter" -->
             

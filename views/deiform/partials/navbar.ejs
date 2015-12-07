@@ -37,7 +37,7 @@
                               We then split each of those entries at :, as we do above.
                         -->
 
-                        <% if (navbarEntry.dropdown != null) { %>
+                        <% if (navbarEntry.dropdown.length != 0) { %>
                           <!-- split the string at each semi-colon to give us an array of NAME:URL -->
                           <% var dropDownEntries = navbarEntry.dropdown.split(';') %>
 
