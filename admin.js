@@ -26,8 +26,8 @@ admin.param('id', function (req,res,next,id) {
 
 /*******************************
 *           Routing            *
-*  all routes are prefixed with *
-*  /admin/                      *
+*  all routes are prefixed with*
+*  /admin/                     *
 ********************************/
 //Index Homepage
 admin.get('/', function (req,res) {
