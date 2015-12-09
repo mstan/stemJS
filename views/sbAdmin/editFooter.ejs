@@ -40,14 +40,14 @@
 
                     <% footerSections.forEach (function (footerSection) { %>
                     <div class="col-lg-12 table table-bordered"><!-- Contain all subsets -->
-                        <!-- Header -->                
+                        <!-- Header -->
                         <div class="col-lg-12">
                             <div class="col-lg-3">
                                  <label><small>Header</small></label>
                                  <input class="hidden" name="id" value="<%= footerSection.id %>" readonly >
                                  <input class="form-control" name="header" placeholder="Header" value="<%= footerSection.header %>">
                             </div>
-                        </div><!-- end col-lg-12 -->      
+                        </div>
                         <!-- End Header -->
 
                         <!-- Links -->
@@ -55,7 +55,7 @@
                             <div class="col-lg-8">   
                                 <textarea class="form-control" placeholder="NAME|URL;NAME|URL;...NAME|URL" rows="1" name="links"><%= footerSection.links %></textarea>
                             </div>
-                        </div><!-- end col-lg-12 -->                          
+                        </div>
                         <!-- End Links -->
 
                         <!-- Priority -->
@@ -63,8 +63,8 @@
                              <div class="col-lg-1">
                                  <label><small>Priority</small></label>
                                 <input class="form-control" name="priority" value="<%= footerSection.priority %>">
-                             </div>                       
-                        </div><!-- end col-lg-12 -->
+                             </div>
+                        </div>
                         <!-- End Priority -->  
 
                         <!-- Delete -->
@@ -74,9 +74,9 @@
                         <!-- End Delete -->
 
                                
-                    </div><!-- end contain all subsets -->        
+                    </div><!-- end contain all subsets -->
                     <% }); %><!-- end footerSections.forEach -->
-      
+
                         <!-- submit button -->
                         <div class="col-lg-12" align="center">
                             <input type="submit" class="btn btn-lg btn-success" value="Update">
@@ -84,7 +84,6 @@
                         <!-- end submit button -->
 
                 </form>
-
 
                 <!-- Add New Heading  -->
                 <div class="row">
@@ -110,7 +109,7 @@
 
                         <!-- Links -->
                         <div class="col-lg-12" style="padding-bottom:50px">
-                            <div class="col-lg-8">   
+                            <div class="col-lg-8">
                                 <textarea class="form-control" placeholder="NAME|URL;NAME|URL;...NAME|URL"  rows="1" name="links"></textarea>
                             </div>
                         </div>
@@ -121,18 +120,18 @@
                              <div class="col-lg-1">
                                  <label><small>Priority</small></label>
                                 <input class="form-control" name="priority" placeholder="0" >
-                             </div>                       
+                             </div>
                         </div>
-                        <!-- End Priority -->   
+                        <!-- End Priority -->
                     </div><!-- end table table-bordered -->
 
                     <!-- submit button -->
                     <div class="col-lg-12" align="center">
                         <input class="btn btn-lg btn-success"  type="submit" value="Add New">
                     </div>
-                    <!-- end submit button -->   
+                    <!-- end submit button -->
 
-                 </form>                   
+                 </form>
 
 
 

@@ -38,14 +38,14 @@
                     <% navbarEntries.forEach (function (navbarEntry) { %>
                     <div class="col-lg-12 table table-bordered">
 
-                        <!-- Header -->                
+                        <!-- Header -->
                         <div class="col-lg-12">
                             <div class="col-lg-3">
                                  <label><small>Header</small></label>
                                  <input class="hidden" name="id" value="<%= navbarEntry.id %>" readonly >
                                  <input class="form-control" placeholder="Header" name="header" value="<%= navbarEntry.header %>">
                             </div>
-                        </div>      
+                        </div>
                         <!-- End Header -->
 
                         <!-- Dropdown -->
@@ -53,7 +53,7 @@
                             <div class="col-lg-8">   
                                 <textarea class="form-control" rows="1" placeholder="NAME|URL;NAME|URL;...NAME|URL" name="dropdown"><%= navbarEntry.dropdown %></textarea>
                             </div>
-                        </div>                   
+                        </div>
                         <!-- Dropdown -->
 
                         <!-- Priority -->
@@ -61,9 +61,9 @@
                              <div class="col-lg-1">
                                  <label><small>Priority</small></label>
                                 <input class="form-control" name="priority" value="<%= navbarEntry.priority %>">
-                             </div>                       
+                             </div>
                         </div><!-- end col-lg-12 -->
-                        <!-- End Priority -->   
+                        <!-- End Priority -->
 
                          <!-- Delete -->
                         <div class="col-lg-12" style="padding-bottom:50px" align="right">
@@ -79,9 +79,9 @@
                         <input class="btn btn-lg btn-success" type="submit" value="Update">
                     </div><!-- col-lg 12 -->
                         <!-- end submit button -->
-                                       
+
                 </form>
-                <!-- End Edit Navbar Form -->  
+                <!-- End Edit Navbar Form -->
 
                 <!-- Page Heading -->
                 <div class="row">
@@ -91,12 +91,12 @@
                         </h1>
                     </div><!-- col-lg 12 -->
                 </div><!-- /.row -->
-                <!-- End Page Heading -->                   
+                <!-- End Page Heading -->
 
                 <form role="form" action="/admin/navigation/navbar/add" method="POST">
                     <div class="col-lg-12 table table-bordered">
 
-                        <!-- Header -->                
+                        <!-- Header -->
                         <div class="col-lg-12">
                             <div class="col-lg-3">
                                  <label><small>Header</small></label>
@@ -110,7 +110,7 @@
                             <div class="col-lg-8">   
                                 <textarea class="form-control" placeholder="NAME|URL;NAME|URL;...NAME|URL" rows="1" name="dropdown"></textarea>
                             </div>
-                        </div>                        
+                        </div>
                         <!-- Dropdown -->
 
                         <!-- Priority -->
@@ -118,7 +118,7 @@
                              <div class="col-lg-1">
                                  <label><small>Priority</small></label>
                                 <input class="form-control" name="priority" placeholder="0">
-                             </div>                       
+                             </div>
                         </div>
                         <!-- End Priority -->  
 
@@ -128,9 +128,8 @@
                     <div class="col-lg-12" align="center">
                         <input class="btn btn-lg btn-success"  type="submit" value="Add New">
                     </div>
-                    <!-- end submit button -->                
-                </form>                                   
-            
+                    <!-- end submit button -->
+                </form>
 
             </div><!-- /container-fluid -->
         </div><!-- /#pager-wrapper -->

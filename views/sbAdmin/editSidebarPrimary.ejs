@@ -41,7 +41,7 @@
                     <!-- Run a for each for each entry -->
                     <% sidebarPrimarySections.forEach (function (sidebarPrimarySection) { %>
                     <div class="col-lg-12 table table-bordered"><!-- For each entry -->
-                        <!-- Header -->                
+                        <!-- Header -->
                         <div class="col-lg-12">
                             <div class="col-lg-3">
                                  <label><small>Header</small></label>
@@ -56,7 +56,7 @@
                             <div class="col-lg-8">   
                                 <textarea class="form-control" placeholder="NAME|URL;NAME|URL;...NAME|URL" rows="1" name="links"><%= sidebarPrimarySection.links %></textarea>
                             </div>
-                        </div>                        
+                        </div>
                         <!-- End Links -->
 
                         <!-- Priority -->
@@ -64,9 +64,9 @@
                              <div class="col-lg-1">
                                 <label><small>Priority</small></label>
                                 <input class="form-control" name="priority" value="<%= sidebarPrimarySection.priority %>">
-                             </div>                       
+                             </div>
                         </div>
-                        <!-- End Priority -->    
+                        <!-- End Priority -->
 
                         <!-- Delete -->
                         <div class="col-lg-12" style="padding-bottom:50px" align="right">
@@ -75,7 +75,7 @@
                         <!-- End Delete -->
                              
                                
-                    </div><!-- End for each entry -->        
+                    </div><!-- End for each entry -->
                     <% }); %>
                     <!-- End footerSections.forEach -->
       
@@ -98,7 +98,7 @@
                         </h1>
                     </div>
                 </div>
-                <!-- End Add New Heading -->                
+                <!-- End Add New Heading -->
 
                 <form role="form" action="/admin/navigation/sidebarPrimary/add" method="POST">
                     <div class="col-lg-12 table table-bordered">
@@ -116,7 +116,7 @@
                             <div class="col-lg-8">   
                                 <textarea class="form-control" placeholder="NAME|URL;NAME|URL;...NAME|URL" rows="1" name="links"></textarea>
                             </div>
-                        </div>                        
+                        </div>
                         <!-- End Links -->
 
                         <!-- Priority -->
@@ -124,7 +124,7 @@
                              <div class="col-lg-1">
                                  <label><small>Priority</small></label>
                                 <input class="form-control" name="priority" placeholder="0">
-                             </div>                       
+                             </div>
                         </div>
                         <!-- End Priority -->  
 
@@ -134,9 +134,9 @@
                     <div class="col-lg-12" align="center">
                         <input class="btn btn-lg btn-success"  type="submit" value="Add New">
                     </div>
-                    <!-- end submit button -->                
-                </form>                
-            
+                    <!-- end submit button -->
+                </form>
+
 
             </div><!-- /container-fluid -->
         </div><!-- /#page-wrapper -->
