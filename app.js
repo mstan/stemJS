@@ -48,13 +48,6 @@ app.use(function (req,res,next) {
   req.db = db; 
   next();
 });
-//test application
-app.use(function (req,res,next) {
-	user = req.user || null;
-	console.log('Your user is:');
-	console.log(user);
-	next();
-});
 //Set view Engine
 app.set('view engine', 'ejs');
 //Parameter based middleware
