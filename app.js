@@ -2,43 +2,42 @@
 *        Packages & Deps       *
 ********************************/
 //Node modules
-var express = require('express');
-var ejs = require('ejs');
-var sqlite3 = require('sqlite3');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var passport = require('passport');
+var express = require('express'),
+    ejs = require('ejs'),
+    sqlite3 = require('sqlite3'),
+    bodyParser = require('body-parser'),
+    session = require('express-session'),
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
+    passport = require('passport');
 
 /*******************************
-*        Database      *
+*        Database              *
 ********************************/
 dbFile = "./db.sqlite";
 var db = new sqlite3.Database(dbFile);
 
-//Personal lib
-var slugHandler = require('./lib/slugHandler.js');
-var getConfigsFromDB = require('./lib/getConfigsFromDB.js');
+//Personal library
+var slugHandler = require('./lib/slugHandler.js'),
+    getConfigsFromDB = require('./lib/getConfigsFromDB.js'),
+    permissionHandler = require('./lib/permissionHandler.js');
 
-//Admin control panel
-var admin = require('./admin.js');
-//authentication
-var auth = require('./auth.js');
+
+var admin = require('./admin.js'), //Admin Control Panel
+    auth = require('./auth.js'); //Authenticator
 
 /*******************************
 *       Up & Running           *
 ********************************/
 var app = express();
 
-
-
 /*******************************
 *       Middleware             *
 ********************************/
-app.use(session({secret: 'secret token', resave: true, saveUninitialized: true}));
+//Sessions and auth
+app.use(session({secret: 'secret token', resave: true, saveUninitialized: true})); // Add a token here
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser('super secret token'));
+app.use(cookieParser('super secret token')); //Add a token here
 app.use(passport.initialize());
 app.use(passport.session()); 
 
@@ -62,14 +61,13 @@ app.set('view engine', 'ejs');
 app.param('slug', slugHandler.getFromDB);
 //Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
-//Global config - This is called before /admin because it is also used in admin
-app.use(getConfigsFromDB.globalConfig);
-//Redirect all /admin routes to be handled by route.js
-app.use('/admin', admin);
-//Redirect all /admin routes to be handled by route.js
+app.use(getConfigsFromDB.globalConfig); //This is called BEFORE /admin and /auth because both make use of our global config
+//Redirect all /admin and /auth routes to their respective sub handlers
+app.use('/admin', permissionHandler.authCheck, admin)
 app.use('/auth', auth);
-//Look up the database configuration each time for each for user pages. This called after /admin
-//because admin does not need these and these are not called if redirected to admin
+
+/* If /admin or /auth are not called, we are rendering an end
+	user page. Thus, we must call all of these.  */
 app.use(getConfigsFromDB.navbarConfig, 
 				getConfigsFromDB.sidebarPrimaryConfig, 
 				getConfigsFromDB.sidebarSecondaryConfig,

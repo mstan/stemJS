@@ -2,12 +2,12 @@
 *        Packages & Deps       *
 ********************************/
 //Packages
-var express = require('express'); 
-var slugHandler = require('./lib/slugHandler.js');
+var express = require('express'),
+    slugHandler = require('./lib/slugHandler.js');
 
 //lib
-var getConfigsFromDB = require('./lib/getConfigsFromDB.js');
-var navigationHandler = require('./lib/navigationHandler.js');
+var getConfigsFromDB = require('./lib/getConfigsFromDB.js'),
+    navigationHandler = require('./lib/navigationHandler.js');
 
 /*******************************
 *       Up & Running           *
@@ -42,24 +42,18 @@ admin.get('/', function (req,res) {
 admin.get('/pages', slugHandler.listAllPagesBySlug, function (req,res) {
   res.render('sbAdmin/editPages.ejs');
 });
-
-admin.get('/pages/add', function (req,res) {
-  res.render('sbAdmin/addPage.ejs');
-});
-
-admin.post('/pages/add', slugHandler.addNewPage);
-
-//Pull up an editor for a single page. Identified by its slug
 admin.get('/pages/edit/:slug', function (req,res) {
   page = req.page;
   res.render('sbAdmin/editPage.ejs');
 });
 
-//Submission handler for actually modifying the page
 admin.post('/pages/edit', slugHandler.updatePageBySlug);
+admin.get('/pages/delete/:slug', slugHandler.deletePageBySlug);
 
-//Remove the entirety of the entry from the database. identified by slug.
-admin.get('/pages/delete/:slug', slugHandler.deletePageBySlug); //end admin.get
+admin.get('/pages/add', function (req,res) {
+  res.render('sbAdmin/addPage.ejs');
+});
+admin.post('/pages/add', slugHandler.addNewPage);
 
   /*******************************
   *     Routing - Navigation     *

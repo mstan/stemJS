@@ -1,13 +1,8 @@
 /*******************************
 *        Packages & Deps       *
 ********************************/
-var express = require('express');
-var passport = require('passport');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-
-
+var express = require('express'),
+    passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 
@@ -34,7 +29,7 @@ auth.get('/', function (req,res) {
 });
 
 auth.post('/', passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/admin',
     failureRedirect: '/auth'
   }) // end passport.authenticate 
 ); // end auth.post
