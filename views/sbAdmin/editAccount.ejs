@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= config.siteNavbar %> | Page Editor</title>
+    <!-- Stylesheets -->
+    <%- include('./partials/styling.ejs') %>
+    <!-- End Stylesheeting -->
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+            <!-- Top Menu Items -->
+            <%- include('./partials/navbar.ejs') %>
+            <!-- Sidebar -->
+            <%- include('./partials/sidebar') %>
+        </nav>
+        <!-- End Navigation -->
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            <%= user.name %> <small>Edit</small>
+                        </h1>
+                    </div>
+                </div>
+                <!-- End Page Heading -->
+
+                <!-- Begin Page Content -->
+                <form role="form" action="/admin/account/edit" method="POST">
+
+                    <!-- user.name -->
+                    <div class="col-lg-6">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" name="name" value="<%= user.name %>">
+                                <p class="help-block">
+                                    Account name. It's how you know it's you!
+                                </p>
+                            </div>   
+                    </div>
+                    <!-- end name -->
+                                   
+                    <!-- user.email -->
+                    <div class="col-lg-6" style="padding-bottom:50px">
+                    
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" name="email" value="<%= user.email %>">
+                                <p class="help-block">This is your email. It's how you sign in.</p>
+                            </div>
+                            
+                    </div>
+                    <!-- end email -->
+
+                 <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Password Change
+                        </h1>
+                    </div>
+                </div>
+                <!-- End Page Heading -->                   
+
+                    <!-- user password -->
+                    <div class="col-lg-6">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Reset Password</label>
+                                <input class="form-control" name="password" placeholder="New Password...">
+                                <p class="help-block">Change your password here. 
+                                <strong>LEAVE THESE BLANK</strong> if you do not want to change your password.</p>
+                            </div>
+                    </div>
+                    <!-- end password -->
+
+
+                    <!-- user password -->
+                    <div class="col-lg-6">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Test</label>
+                                <input class="form-control" name="passwordCheck" placeholder="Confirm Password...">
+                                
+                            </div>   
+                    </div>
+                    <!-- end password -->                    
+
+
+                    <!-- submit button -->
+                    <div class="col-lg-12" align="center">
+                        <input class="btn btn-lg btn-success"  type="submit" value="Update">
+                    </div>
+                    <!-- end submit button -->
+
+                </form>
+            
+
+
+            </div><!-- /container-fluid -->
+        </div><!-- /#pager-wrapper -->
+    </div><!-- /#wrapper -->
+
+    <!-- JS -->
+    <%- include('./partials/javascript.ejs') %>
+    <!-- End JS -->
+
+</body>
+</html>

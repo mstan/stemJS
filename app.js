@@ -17,6 +17,10 @@ var express = require('express'),
 dbFile = "./db.sqlite";
 var db = new sqlite3.Database(dbFile);
 
+/*******************************
+*   Packages & Deps (con.)     *
+********************************/
+
 //Personal library
 var slugHandler = require('./lib/slugHandler.js'),
     getConfigsFromDB = require('./lib/getConfigsFromDB.js'),
@@ -46,6 +50,7 @@ app.use(express.static(__dirname + '/views'));
 //Bind the database to the req so it can be accessed elsewhere
 app.use(function (req,res,next) {
   req.db = db; 
+  user = req.user || null;
   next();
 });
 //Set view Engine

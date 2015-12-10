@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
 <!-- partials/sidebarPrimary.ejs -->
 <!--             <a class="selected" href="index.html">Home Page</a> -->
+
+<% if ( sidebarPrimarySections != 0 ) { %>
+
 <li>
     <ul class="blocklist">
         <!--  sidebarPrimarySections - object containing all the sidebar database objects
@@ -30,9 +33,12 @@
     </ul>
 </li>
 
+<% } %>
+
 
 <!-- Secondary Sidebar -->
 
+<% if(sidebarSecondarySections.length != 0)  { %>
 
 <li>
     <h4>External Links</h4>
@@ -42,3 +48,5 @@
             <% }); %>
         </ul>
 </li>
+
+<% } %>

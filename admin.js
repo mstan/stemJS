@@ -56,6 +56,27 @@ admin.get('/pages/add', function (req,res) {
 admin.post('/pages/add', slugHandler.addNewPage);
 
   /*******************************
+  *        Routing - Pages       *
+  ********************************/
+admin.get('/account', function (req,res) {
+  var user = req.user;
+  res.render('sbAdmin/editAccount', {user: user});
+});
+admin.post('/account/edit', function (req,res) {
+  var name = req.body.name,
+      email = req.body.email;
+      password = req.body.password;
+      passwordCheck = req.body.passwordCheck;
+
+      //Run checks on password. Is it empty? ignore it. If it filled. Make sure it's correct (are they the same?). use it if so.
+
+      //Database case for no password
+
+      //Database case for password
+});
+
+
+  /*******************************
   *     Routing - Navigation     *
   ********************************/
 
@@ -96,6 +117,9 @@ admin.get('/navigation/socialMedia', getConfigsFromDB.socialMediaConfig, functio
   res.render('sbAdmin/editSocialMedia.ejs');
 });
 admin.post('/navigation/socialMedia/', navigationHandler.updateSocialMedia);
+
+
+
 
 
 //Export admin module
