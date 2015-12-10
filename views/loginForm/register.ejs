@@ -43,7 +43,13 @@
                             <h1><strong><%= config.siteName %> </strong> Login Form</h1>
                             <div class="description">
                             	<p>
-	                            	<%= auth.locals.msg %>
+                                    <!-- error message -->
+                                    <% if (auth.locals.status == 0) { %>
+                                         <div class="alert alert-danger">
+                                            <strong>Error!</strong> <%= auth.locals.msg %>
+                                        </div>                                   
+                                    <% } %>
+                                    <!-- end error message -->
                             	</p>
                             </div>
                         </div>

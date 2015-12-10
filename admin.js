@@ -63,16 +63,27 @@ admin.get('/account', function (req,res) {
   res.render('sbAdmin/editAccount', {user: user});
 });
 admin.post('/account/edit', function (req,res) {
-  var name = req.body.name,
+  var id = req.body.id,
+      name = req.body.name,
       email = req.body.email;
       password = req.body.password;
       passwordCheck = req.body.passwordCheck;
 
+
       //Run checks on password. Is it empty? ignore it. If it filled. Make sure it's correct (are they the same?). use it if so.
+      if (password || passwordCheck == '') {
+       //Database case for no password
+          var userToken = [id,name, email];
 
-      //Database case for no password
+          req.db.run('UPDATE users SET name=?, email=? WHERE id=? ')
 
-      //Database case for password
+      } else {
+      //Database case for password        
+      }
+
+
+
+
 });
 
 

@@ -36,7 +36,20 @@
                 <form role="form" action="/admin/account/edit" method="POST">
 
                     <!-- user.name -->
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>ID</label>
+                                <input class="form-control" readonly name="id" value="<%= user.id %>">
+                                <p class="help-block">
+                                    Account ID. You can't change this!
+                                </p>
+                            </div>   
+                    </div>
+                    <!-- end name -->                
+
+                    <!-- user.name -->
+                    <div class="col-lg-4">
                         <form role="form">
                             <div class="form-group">
                                 <label>Name</label>
@@ -49,7 +62,7 @@
                     <!-- end name -->
                                    
                     <!-- user.email -->
-                    <div class="col-lg-6" style="padding-bottom:50px">
+                    <div class="col-lg-4" style="padding-bottom:50px">
                     
                             <div class="form-group">
                                 <label>Email</label>
