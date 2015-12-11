@@ -12,4 +12,4 @@
 *                                                                                                                                  *
 ************************************************************************************************************************************/
 
-CREATE TABLE "users" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "name" VARCHAR, "email" VARCHAR UNIQUE , "password" VARCHAR)
+CREATE TABLE "users" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "name" VARCHAR, "email" VARCHAR UNIQUE , "password" VARCHAR, "salt" VARCHAR)
