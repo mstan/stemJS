@@ -18,7 +18,6 @@ auth = express();
 /*******************************
 *       Middleware             *
 ********************************/
-
 auth.use(function (req,res,next) {
   db = req.db; 
   next();
@@ -37,7 +36,6 @@ passport.deserializeUser(authHandler.deserializeUser);
 auth.get('/', permissionHandler.loginCheck, function (req,res) {
   res.render('loginForm/index');
 });
-
 auth.post('/', passport.authenticate('local', {
     successRedirect: '/admin',
     failureRedirect: '/auth',
@@ -51,11 +49,7 @@ auth.post('/', passport.authenticate('local', {
 auth.get('/register', permissionHandler.firstCheck, function (req,res) {
   res.render('loginForm/register');
 });
-
 auth.post('/register', permissionHandler.firstCheck, authHandler.registerAccount);
 
-
-
-
-
+//Export
 module.exports = auth;
