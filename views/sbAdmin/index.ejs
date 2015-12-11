@@ -30,21 +30,47 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Dashboard <small>Statistics Overview</small>
+                            Dashboard <small></small>
                         </h1>
                     </div><!-- col-lg 12 -->
                 </div><!-- /.row -->
                 <!-- End Page Heading -->
 
-<!-- Page Content -->
+                <form role="form" action="/admin/globalConfig" method="POST">                
+
+                    <!-- siteName -->
+                    <div class="col-lg-6">
+                    
+                            <div class="form-group">
+                                <label>Website Name</label>
+                                <input class="form-control" name="siteName" value="<%= config.siteName %>">
+                                <p class="help-block">What's the name of your site?</p>
+                            </div>
+                            
+                    </div>
+                    <!-- end siteName -->
+
+                     <!-- siteName -->
+                    <div class="col-lg-6">
+                    
+                            <div class="form-group">
+                                <label>Navigation Bar Header</label>
+                                <input class="form-control" name="siteNavbar" value="<%= config.siteNavbar %>">
+                                <p class="help-block">What should show up at the top on the tabs?</p>
+                            </div>
+                            
+                    </div>
+                    <!-- end siteName -->   
+                    
+                    <!-- submit button -->
+                    <div class="col-lg-12" align="center">
+                        <input class="btn btn-lg btn-success" type="submit" value="Update">
+                    </div>
+                    <!-- end submit button -->
+
+                </form>                
 
 
-
-
-
-
-
-<!-- End Page Content -->
 
             </div><!-- /.container-fluid -->
         </div><!-- /#page-wrapper -->

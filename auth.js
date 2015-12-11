@@ -27,7 +27,7 @@ auth.use(function (req,res,next) {
 /*******************************
 *       Passport               *
 ********************************/
-passport.use(new LocalStrategy(authHandler.localStrategy)); // end passport.use
+passport.use(new LocalStrategy(authHandler.localStrategy));
 passport.serializeUser(authHandler.serializeUser);
 passport.deserializeUser(authHandler.deserializeUser);
 

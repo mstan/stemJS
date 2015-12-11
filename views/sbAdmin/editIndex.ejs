@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= config.siteNavbar %> | Page Editor</title>
+    <!-- Stylesheets -->
+    <%- include('./partials/styling.ejs') %>
+    <!-- End Stylesheeting -->
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+            <!-- Top Menu Items -->
+            <%- include('./partials/navbar.ejs') %>
+            <!-- Sidebar -->
+            <%- include('./partials/sidebar') %>
+        </nav>
+        <!-- End Navigation -->
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Index <small>Edit</small>
+                        </h1>
+                    </div>
+                </div>
+                <!-- End Page Heading -->
+
+                <!-- Begin Page Content -->
+                <form role="form" action="/admin/pages/index" method="POST">
+
+                    <!-- page.navbarTitle -->
+                    <div class="col-lg-4">
+                    
+                            <div class="form-group">
+                                <label>ID</label>
+                                <input class="form-control" name="id" readonly value="<%= indexConfig.id %>">
+                                <p class="help-block">Used for technical things. You can't change this.</p>
+                            </div>
+                            
+                    </div>
+                    <!-- end navbarTitle -->
+                                   
+                    <!-- page.navbarTitle -->
+                    <div class="col-lg-4">
+                    
+                            <div class="form-group">
+                                <label>Header</label>
+                                <input class="form-control" name="header" value="<%= indexConfig.header %>">
+                                <p class="help-block">Front and center! What is your website?</p>
+                            </div>
+                            
+                    </div>
+                    <!-- end navbarTitle -->
+
+                    <!-- page.articleTitle -->
+                    <div class="col-lg-4">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Article Title</label>
+                                <input class="form-control" name="articleHeader" value="<%= indexConfig.articleHeader %>">
+                                <p class="help-block">This is the name of the page's article.</p>
+                            </div>   
+                    </div>
+                    <!-- end articleTitle -->
+
+                    <!-- page.articleTitle -->
+                    <div class="col-lg-12">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Website Tagline</label>
+                                <input class="form-control" name="tagline" value="<%= indexConfig.tagline %>">
+                                <p class="help-block">Below the header. A short bit about your site.</p>
+                            </div>   
+                    </div>
+                    <!-- end articleTitle -->  
+
+                    <!-- page.navbarTitle -->
+                    <div class="col-lg-6">
+                    
+                            <div class="form-group">
+                                <label>Order Now!</label>
+                                <input class="form-control" name="orderButton" value="<%= indexConfig.orderButton %>">
+                                <p class="help-block">Order button <strong><small>If either buttton is left blank, do not render either.</small></strong></p>
+                            </div>
+                            
+                    </div>
+                    <!-- end navbarTitle -->
+
+                    <!-- page.articleTitle -->
+                    <div class="col-lg-6">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Learn more!</label>
+                                <input class="form-control" name="learnMoreButton" value="<%= indexConfig.learnMoreButton %>">
+                                <p class="help-block">Learn More button</p>
+                            </div>   
+                    </div>
+                    <!-- end articleTitle -->                                      
+
+
+                    <!-- page.articleContent -->
+                    <div class="col-lg-12" >
+                        <div class="form-group">
+                            <label>Article Content</label>
+                            <textarea class="form-control" rows="3" name="articleContent"><%= indexConfig.articleContent %></textarea>
+                        </div>
+                    </div>
+                    <!-- end articleContent -->
+
+                    <!-- submit button -->
+                    <div class="col-lg-12" align="center">
+                        <input class="btn btn-lg btn-success" type="submit" value="Update">
+                    </div>
+                    <!-- end submit button -->
+
+                </form>
+            
+
+
+            </div><!-- /container-fluid -->
+        </div><!-- /#pager-wrapper -->
+    </div><!-- /#wrapper -->
+
+    <!-- JS -->
+    <%- include('./partials/javascript.ejs') %>
+    <!-- End JS -->
+
+</body>
+</html>

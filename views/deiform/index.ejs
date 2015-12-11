@@ -22,7 +22,7 @@
                 <p><%= indexConfig.tagline %></p>
 
                 <!-- Order Now and Learn More. If either of these are null, do not render either. -->
-                <% if (indexConfig.orderButton !== null && indexConfig.learnMoreButton !== null) { %>
+                <% if (indexConfig.orderButton.length != 0 && indexConfig.learnMoreButton.length != 0) { %>
                     <p><a href="<%= indexConfig.orderButton %>" class="button button-slider"><i class="fa fa-gbp"></i>Order</a>
             <a href="<%= indexConfig.learnMoreButton %>" class="button button-reversed button-slider"><i class="fa fa-info"></i> Learn More</a></p>
                 <% } %>

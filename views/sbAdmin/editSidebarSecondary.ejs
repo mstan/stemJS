@@ -75,9 +75,11 @@
                     <% }); %><!-- end footerSections.forEach -->
       
                         <!-- submit button -->
+                    <% if (sidebarSecondarySections.length != 0) { %>
                         <div class="col-lg-12" align="center">
                             <input class="btn btn-lg btn-success" type="submit" value="Update" >
                         </div>
+                    <% } %>
                         <!-- end submit button -->
 
                 </form>

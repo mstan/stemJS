@@ -7,7 +7,9 @@ var express = require('express'),
 
 //lib
 var getConfigsFromDB = require('./lib/getConfigsFromDB.js'),
-    navigationHandler = require('./lib/navigationHandler.js');
+    navigationHandler = require('./lib/navigationHandler.js'),
+    authHandler = require('./lib/authHandler.js');
+    configHandler = require('./lib/configHandler.js');
 
 /*******************************
 *       Up & Running           *
@@ -29,10 +31,12 @@ admin.param('id', function (req,res,next,id) {
 *  all routes are prefixed with*
 *  /admin/                     *
 ********************************/
-//Index Homepage
+//Admin Homepage
 admin.get('/', function (req,res) {
   res.render('sbAdmin/index.ejs');
 });
+
+admin.post('/globalConfig', configHandler.globalConfigHandler);
 
   /*******************************
   *        Routing - Pages       *
@@ -46,7 +50,6 @@ admin.get('/pages/edit/:slug', function (req,res) {
   page = req.page;
   res.render('sbAdmin/editPage.ejs');
 });
-
 admin.post('/pages/edit', slugHandler.updatePageBySlug);
 admin.get('/pages/delete/:slug', slugHandler.deletePageBySlug);
 
@@ -55,35 +58,23 @@ admin.get('/pages/add', function (req,res) {
 });
 admin.post('/pages/add', slugHandler.addNewPage);
 
+
+admin.get('/pages/index', getConfigsFromDB.indexConfig, function (req,res) {
+  res.render('sbAdmin/editIndex.ejs');
+});
+admin.post('/pages/index', configHandler.indexHandler);
+
   /*******************************
-  *        Routing - Pages       *
+  *        Routing - User       *
   ********************************/
 admin.get('/account', function (req,res) {
   var user = req.user;
   res.render('sbAdmin/editAccount', {user: user});
 });
-admin.post('/account/edit', function (req,res) {
-  var id = req.body.id,
-      name = req.body.name,
-      email = req.body.email;
-      password = req.body.password;
-      passwordCheck = req.body.passwordCheck;
-
-
-      //Run checks on password. Is it empty? ignore it. If it filled. Make sure it's correct (are they the same?). use it if so.
-      if (password || passwordCheck == '') {
-       //Database case for no password
-          var userToken = [id,name, email];
-
-          req.db.run('UPDATE users SET name=?, email=? WHERE id=? ')
-
-      } else {
-      //Database case for password        
-      }
-
-
-
-
+admin.post('/account/edit', authHandler.updateAccount); 
+admin.get('/account/logout', function (req,res) {
+  req.logout();
+  res.redirect('/auth');
 });
 
 
@@ -127,7 +118,7 @@ admin.post('/navigation/footer/add', navigationHandler.addFooter);
 admin.get('/navigation/socialMedia', getConfigsFromDB.socialMediaConfig, function (req,res) {
   res.render('sbAdmin/editSocialMedia.ejs');
 });
-admin.post('/navigation/socialMedia/', navigationHandler.updateSocialMedia);
+admin.post('/navigation/socialMedia/', navigationHandler.socialMediaHandler);
 
 
 

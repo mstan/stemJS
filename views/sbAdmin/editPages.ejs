@@ -47,7 +47,6 @@
                                 <tr>
                                     <th>Page</th>
                                     <th>Handler</th>
-                                    <th>Last Modified</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
@@ -68,8 +67,7 @@
                                     </td>
 
                                     <!-- Last Modified -->
-                                    <td>12-12-15</td>
-                                        <td><a class="btn btn-sm btn-danger" href="pages/delete/<%= pageBySlug.slug %>">Delete</a></td><!-- Delete -->
+                                    <td><a class="btn btn-sm btn-danger" href="pages/delete/<%= pageBySlug.slug %>">Delete</a></td><!-- Delete -->
                                     </tr>
                                 <% }); %><!--end pagesBySlug.forEach -->
 
