@@ -2,7 +2,7 @@
 *        Packages & Deps       *
 ********************************/
 var express = require('express'),
-    passport = require('passport')
+    passport = require('passport');
 
     LocalStrategy = require('passport-local').Strategy;
 
@@ -22,6 +22,14 @@ auth.use(function (req,res,next) {
   db = req.db; 
   next();
 });
+
+/*******************************
+*       nodemailer             *
+********************************/
+
+
+
+
 
 /*******************************
 *       Passport               *
@@ -50,6 +58,19 @@ auth.get('/register', permissionHandler.firstCheck, function (req,res) {
   res.render('loginForm/register');
 });
 auth.post('/register', permissionHandler.firstCheck, authHandler.registerAccount);
+
+/*******************************
+*      Routing - Reset         *
+********************************/
+auth.get('/reset', function (req,res) {
+	res.render('loginForm/forgotPassword');
+});
+auth.post('/reset', authHandler.resetPassword);
+
+auth.get('/newPassword', authHandler.newPasswordGET);
+
+auth.post('/newPassword', authHandler.newPasswordPOST);
+
 
 //Export
 module.exports = auth;
