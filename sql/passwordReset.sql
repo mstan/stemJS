@@ -3,4 +3,4 @@
 *                                                                                                                                  *
 * The following is a table creation statement for the passwordReset in stemJS.                                                     *
 ************************************************************************************************************************************/
-CREATE TABLE "passwordReset" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "email" VARCHAR NOT NULL  UNIQUE , "createdAt" INTEGER, "hasBeenUsed" BOOL NOT NULL  DEFAULT 0, "key" VARCHAR NOT NULL )
+CREATE TABLE "passwordReset" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "email" VARCHAR NOT NULL  UNIQUE , "createdAt" VARCHAR, "hasBeenUsed" BOOL NOT NULL  DEFAULT 0, "key" VARCHAR NOT NULL )
