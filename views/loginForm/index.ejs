@@ -44,11 +44,16 @@
                             <div class="description">
                             	<p>
                                     <!-- error message -->
-                                    <% if (auth.locals.status == 0) { %>
+                                    <% if (auth.locals.status == -1) { %>
                                          <div class="alert alert-danger">
                                             <strong>Error!</strong> <%= auth.locals.msg %>
                                         </div>                                   
                                     <% } %>
+                                    <% if (auth.locals.status == 1) { %>
+                                         <div class="alert alert-success">
+                                            <strong>Success!</strong> <%= auth.locals.msg %>
+                                        </div>                                   
+                                    <% } %>                                    
                                     <!-- end error message -->
                             	</p>
                             </div>
