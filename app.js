@@ -65,12 +65,12 @@ app.use('/admin', permissionHandler.authCheck, admin)
 app.use('/auth', auth);
 
 /* If /admin or /auth are not called, we are rendering an end
-	user page. Thus, we must call all of these.  */
+  user page. Thus, we must call all of these.  */
 app.use(getConfigsFromDB.navbarConfig, 
-				getConfigsFromDB.sidebarPrimaryConfig, 
-				getConfigsFromDB.sidebarSecondaryConfig,
-				getConfigsFromDB.footerConfig,
-				getConfigsFromDB.socialMediaConfig);
+        getConfigsFromDB.sidebarPrimaryConfig, 
+        getConfigsFromDB.sidebarSecondaryConfig,
+        getConfigsFromDB.footerConfig,
+        getConfigsFromDB.socialMediaConfig);
 
 /*******************************
 *           Routing            *

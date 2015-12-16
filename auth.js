@@ -60,15 +60,13 @@ auth.get('/register', permissionHandler.firstCheck, function (req,res) {
 auth.post('/register', permissionHandler.firstCheck, authHandler.registerAccount);
 
 /*******************************
-*      Routing - Reset         *
+*      Routing - Reset Pass    *
 ********************************/
 auth.get('/reset', function (req,res) {
-	res.render('loginForm/forgotPassword');
+  res.render('loginForm/forgotPassword');
 });
 auth.post('/reset', authHandler.resetPassword);
-
 auth.get('/newPassword', authHandler.newPasswordGET);
-
 auth.post('/newPassword', authHandler.newPasswordPOST);
 
 
