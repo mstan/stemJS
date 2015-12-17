@@ -2,3 +2,5 @@
 npm-debug.log
 db.sqlite
 /views/deiform/three-column.html
+app.js
+/lib/authHandler.js
