@@ -3,18 +3,32 @@
 ********************************/
 //Packages
 var express = require('express'),
-    slugHandler = require('./lib/slugHandler.js');
+    slugHandler = require('./lib/slugHandler.js'),
+    multer = require('multer');
 
 //lib
 var getConfigsFromDB = require('./lib/getConfigsFromDB.js'),
     navigationHandler = require('./lib/navigationHandler.js'),
-    authHandler = require('./lib/authHandler.js');
+    authHandler = require('./lib/authHandler.js'),
+    contentHandler = require('./lib/contentHandler.js'),
     configHandler = require('./lib/configHandler.js');
 
 /*******************************
 *       Up & Running           *
 ********************************/
-var admin = express(); 
+var admin = express();
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './views/content/images/')
+  },
+  filename: function (req, file, cb) {
+    crypto.pseudoRandomBytes(6, function (err, raw) {
+      cb(null, Date.now() + raw.toString('hex') + '.' + mime.extension(file.mimetype));
+    });
+  }
+});
+var upload = multer({ storage: contentHandler.storageMulter });    
 
 /*******************************
 *       Middleware             *
@@ -55,7 +69,7 @@ admin.get('/pages', slugHandler.listAllPagesBySlug, function (req,res) {
   res.render('sbAdmin/editPages.ejs');
 });
 admin.get('/pages/edit/:slug', function (req,res) {
-  page = req.page;
+  var page = req.page;
   res.render('sbAdmin/editPage.ejs');
 });
 admin.post('/pages/edit', slugHandler.updatePageBySlug);
@@ -97,7 +111,6 @@ admin.get('/navigation/sidebarPrimary', getConfigsFromDB.sidebarPrimaryConfig, f
 admin.post('/navigation/sidebarPrimary/', navigationHandler.updateSidebarPrimary);
 admin.get('/navigation/sidebarPrimary/delete/:id', navigationHandler.deleteFromSidebarPrimaryByID);
 
-
 //Sidebar Secondary
 admin.post('/navigation/sidebarSecondary/add', navigationHandler.addSidebarSecondary);
 admin.get('/navigation/sidebarSecondary', getConfigsFromDB.sidebarSecondaryConfig, function (req,res) {
@@ -119,6 +132,17 @@ admin.get('/navigation/socialMedia', getConfigsFromDB.socialMediaConfig, functio
   res.render('sbAdmin/editSocialMedia.ejs');
 });
 admin.post('/navigation/socialMedia/', navigationHandler.socialMediaHandler);
+
+  /*******************************
+  *        Routing - Misc       *
+  ********************************/
+admin.get('/uploadFiles', function (req,res) {
+  var user = req.user;
+  res.render('sbAdmin/uploadFiles');
+});
+
+admin.post('/uploadFiles', upload.single('imagetoUpload'), contentHandler.uploadImagePOST);
+
 
 //Export admin module
 module.exports = admin;

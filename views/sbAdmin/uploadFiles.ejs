@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= config.siteNavbar %> | Uploading</title>
+    <!-- Stylesheets -->
+    <%- include('./partials/styling.ejs') %>
+    <!-- End Stylesheeting -->
+</head>
+
+<body>
+    <div id="wrapper">
+<!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <!-- Top Menu Items -->
+            <%- include('./partials/navbar.ejs') %>
+
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <%- include('./partials/sidebar') %>
+            <!-- /.navbar-collapse -->
+        </nav>
+<!-- End Navigation -->
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+
+             <!-- error message -->
+             <% if (auth.locals.status == 1) { %>
+                <div class="alert alert-success" align="center">
+                    <strong>Success!</strong> <%= auth.locals.msg %>
+                </div>                                   
+             <% } %>
+             <!-- end error message -->
+
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Upload Files
+                        </h1>
+                    </div><!-- col-lg 12 -->
+                </div><!-- /.row -->
+                <!-- End Page Heading -->
+
+<!-- Begin Page Content -->
+                <form role="form" action="/admin/uploadFiles" method="POST" enctype="multipart/form-data">
+
+                <!-- Delete -->
+                    <div class="col-lg-12" style="padding-bottom:50px" align="left">
+                        <input type="file" name="imagetoUpload" >
+                    </div>
+                 <!-- End Delete -->
+
+                     <div class="col-lg-12" style="padding-bottom:50px" align="center">
+                        <input class="btn btn-lg btn-success" type="submit" value="Upload">  
+                    </div>                
+
+                </form>
+
+
+            </div><!-- /container-fluid -->
+ <!-- End Page Content -->
+
+        </div><!-- /#pager-wrapper -->
+    </div><!-- /#wrapper -->
+
+    <!-- JS -->
+    <%- include('./partials/javascript.ejs') %>
+    <!-- End JS -->
+
+</body>
+</html>
